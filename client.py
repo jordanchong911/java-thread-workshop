@@ -20,20 +20,26 @@ while True:
         command_list = command.split()
         if command_list[0] == '/join' and len(command_list) == 3:
             # insert join function
-            pass
+            addr = (command_list[1], int(command_list[2]))
+            try:
+                client.connect(addr)
+                print("Connection to the File Exchange Server is successful!")
+            except:
+                print("Error: Connection to the Server has failed! Please check IP Address and Port Number.")
+                
         elif command_list[0] == '/leave':
             # insert leave function
             pass
-        elif command_list[0] == '/register':
+        elif command_list[0] == '/register' and len(command_list) == 2:
             # insert register function
             pass
-        elif command_list[0] == '/store':
+        elif command_list[0] == '/store' and len(command_list) == 2:
             # insert store function
             pass
         elif command_list[0] == '/dir':
             # insert dir function
             pass
-        elif command_list[0] == '/get':
+        elif command_list[0] == '/get' and len(command_list) == 2:
             # insert get function
             pass
         elif command_list[0] == '/?':
