@@ -20,12 +20,16 @@ while True:
         command_list = command.split()
         if command_list[0] == '/join' and len(command_list) == 3:
             # insert join function
-            addr = (command_list[1], int(command_list[2]))
             try:
-                client.connect(addr)
-                print("Connection to the File Exchange Server is successful!")
+                addr = (command_list[1], int(command_list[2]))
             except:
-                print("Error: Connection to the Server has failed! Please check IP Address and Port Number.")
+                print("Error: Command parameters do not match or is not allowed.")
+            else:
+                try:
+                    client.connect(addr)
+                    print("Connection to the File Exchange Server is successful!")
+                except:
+                    print("Error: Connection to the Server has failed! Please check IP Address and Port Number.")
                 
         elif command_list[0] == '/leave':
             # insert leave function
