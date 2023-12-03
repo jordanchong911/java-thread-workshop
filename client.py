@@ -54,7 +54,7 @@ while True:
                 with open(file, "rb") as file_input:
                     file_size = os.path.getsize(file)
 
-                    buffer_size = 4096
+                    buffer_size = 1024
                     buffer = file_input.read(buffer_size)
 
                     while buffer:
