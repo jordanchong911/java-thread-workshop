@@ -1,5 +1,10 @@
 import socket
+import os
+from datetime import datetime
 
+time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 def print_commands():
     print("\nBelow is the list of commands:\n"
@@ -39,10 +44,30 @@ while True:
                 print("Error: Disconnection failed. Please connect to the server first.")
         elif command_list[0] == '/register' and len(command_list) == 2:
             # insert register function
+            username = ""
             pass
         elif command_list[0] == '/store' and len(command_list) == 2:
             # insert store function
-            pass
+            # not sure if this works yet
+            try:
+                file = command_list[1]
+                with open(file, "rb") as file_input:
+                    file_size = os.path.getsize(file)
+
+                    buffer_size = 4096
+                    buffer = file_input.read(buffer_size)
+
+                    while buffer:
+                        client.sendall(buffer)
+                        buffer = file_input.read(buffer_size)
+                try:
+                    print(f"{username}<{time}>: Uploaded {file}")
+                except:
+                    print(f"<{time}>: Uploaded {file}")
+
+            except:
+                print("Error: File not found.")
+                
         elif command_list[0] == '/dir':
             # insert dir function
             pass
