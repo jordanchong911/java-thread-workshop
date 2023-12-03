@@ -33,7 +33,10 @@ while True:
                 
         elif command_list[0] == '/leave':
             # insert leave function
-            pass
+            try:
+                client.close()
+            except:
+                print("Error: Disconnection failed. Please connect to the server first.")
         elif command_list[0] == '/register' and len(command_list) == 2:
             # insert register function
             pass
